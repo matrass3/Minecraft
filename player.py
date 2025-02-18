@@ -30,6 +30,7 @@ class Player(Camera):
             self.rotate_pitch(delta_y=mouse_dy * MOUSE_SENSITIVITY)
 
     def keyboard_control(self):
+        global PLAYER_SPEED
         key_state = pg.key.get_pressed()
         vel = PLAYER_SPEED * self.app.delta_time
         if key_state[pg.K_w]:
@@ -44,3 +45,11 @@ class Player(Camera):
             self.move_up(vel)
         if key_state[pg.K_e]:
             self.move_down(vel)
+        if key_state[pg.K_LSHIFT]:
+            PLAYER_SPEED = 0.2
+        elif key_state[pg.K_LCTRL]:
+            PLAYER_SPEED = 0.01
+        else:
+            PLAYER_SPEED = 0.1
+
+        
